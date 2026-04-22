@@ -13,6 +13,7 @@ body,
   width: 100%;
   height: 100%;
 }
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
@@ -23,8 +24,6 @@ body,
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 }
-
-@custom-variant dark (&:where(.dark, .dark *));
 
 @media (prefers-color-scheme: dark) {
   :root {
