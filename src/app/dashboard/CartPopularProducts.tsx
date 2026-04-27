@@ -6,7 +6,7 @@ export default function CartPopularProducts() {
   const { data: dashboardMetrics, isLoading } = useGetDashboardMetricsQuery();
 
   return (
-    <section className="row-span-3 xl:row-span-6 bg-white dark:bg-gray-800 shadow-md rounded-2xl pb-16">
+    <section className="row-span-3 xl:row-span-6 bg-white dark:bg-gray-800 shadow-md rounded-2xl pb-18">
       {isLoading ? (
         <div className="m-5">Loading...</div>
       ) : (
