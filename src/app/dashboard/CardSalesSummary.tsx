@@ -9,6 +9,7 @@ import {
   YAxis,
 } from "recharts";
 import { useGetDashboardMetricsQuery } from "@/state/api";
+import { TrendingUp } from "lucide-react";
 
 export default function CardSalesSummary() {
   const { data, isLoading, isError } = useGetDashboardMetricsQuery();
@@ -43,7 +44,7 @@ export default function CardSalesSummary() {
   }
 
   return (
-    <section className="row-span-3 xl:row-span-6  bg-white dark:bg-gray-800 ">
+    <section className="row-span-3 xl:row-span-6 shadow-md rounded-2xl pb-5 bg-white dark:bg-gray-800 flex flex-col justify-between">
       {isLoading ? (
         <div className="m-5">Loading...</div>
       ) : (
@@ -52,6 +53,7 @@ export default function CardSalesSummary() {
             <h2 className="text-lg font-semibold mb-2 px-7 pt-5">
               Sales Summary
             </h2>
+            <hr className="text-gray-300 dark:text-gray-600" />
           </header>
           <main>
             <div className="flex justify-between items-center mb-6 px-7">
@@ -59,7 +61,31 @@ export default function CardSalesSummary() {
                 <p className="text-xs text-gray-400 dark:text-gray-500">
                   Value
                 </p>
+                <div className="flex flex-row items-center">
+                  <span className="text-2xl font-extrabold">
+                    $
+                    {(totalValueSum / 1000000).toLocaleString("en", {
+                      maximumFractionDigits: 2,
+                    })}
+                    m
+                  </span>
+                  <span className="flex flex-row text-green-500 text-sm ml-2">
+                    <TrendingUp className="w-5 h-5 mr-1" />
+                    {averageChangePercentage.toFixed(2)}%
+                  </span>
+                </div>
               </div>
+              <select
+                className="shadow-sm border text-gray-800 border-gray-300 dark:border-gray-600 bg-white p-2 rounded"
+                value={timeframe}
+                onChange={(e) => {
+                  setTimeFrame(e.target.value);
+                }}
+              >
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+              </select>
             </div>
             {/* CHARTS */}
             <ResponsiveContainer width="100%" height={350} className="px-7">
@@ -108,6 +134,17 @@ export default function CardSalesSummary() {
               </BarChart>
             </ResponsiveContainer>
           </main>
+          {/* FOOTER */}
+          <footer>
+            <hr className="text-gray-300 dark:text-gray-600" />
+            <div className="flex justify-between items-center mt-6 text-sm px-7 mb-4">
+              <p>{salesData.length || 0} days</p>
+              <p className="text-sm">
+                highest Sales Date:{" "}
+                <span className="font-bold">{highestValueDate}</span>
+              </p>
+            </div>
+          </footer>
         </>
       )}
     </section>
