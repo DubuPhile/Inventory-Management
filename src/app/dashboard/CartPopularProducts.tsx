@@ -14,12 +14,12 @@ export default function CartPopularProducts() {
           <h3 className="text-lg font-semibold px-7 pt-5 pb-2">
             Popular Products
           </h3>
-          <hr />
+          <hr className="text-gray-300 dark:text-gray-600" />
           <div className="overflow-auto h-full">
             {dashboardMetrics?.popularProducts.map((item) => (
               <div
                 key={item.productId}
-                className="flex items-center justify-between gap-3 px-5 py-7 border-b"
+                className="flex items-center justify-between gap-3 px-5 py-7 border-b border-b-gray-300 dark:border-b-gray-600"
               >
                 <div className="flex items-center gap-3">
                   <div>Img</div>
