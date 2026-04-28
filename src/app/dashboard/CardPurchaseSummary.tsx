@@ -20,7 +20,7 @@ export default function CardPurchaseSummary() {
 
   const width = useWindowWidth() || window.innerWidth;
   return (
-    <section className="flex flex-col justify-between bg-white dark:bg-gray-800 row-span-2 xl:row-span-3 col-span-1 md:col-span-2 xl:col-span-1 shadow-md rounded-2xl">
+    <section className="flex flex-col justify-between overflow-hidden bg-white dark:bg-gray-800 row-span-2 xl:row-span-3 col-span-1 md:col-span-2 xl:col-span-1 shadow-md rounded-2xl">
       {isLoading ? (
         <div className="m-5">Loading...</div>
       ) : (
@@ -29,8 +29,9 @@ export default function CardPurchaseSummary() {
             <h2 className="text-lg font-semibold mb-2 px-7 pt-5">
               Purchase Summary
             </h2>
+            <hr className="text-gray-300 dark:text-gray-600" />
           </header>
-          <main className="flex flex-col flex-1">
+          <main className="flex flex-col flex-1 pt-2">
             <div className="mb-4 mt-1 px-7">
               <p className="text-xs text-gray-400 dark:text-gray-500">
                 Purchased
@@ -58,8 +59,8 @@ export default function CardPurchaseSummary() {
             {/* CHARTS */}
             <ResponsiveContainer
               width="100%"
-              height={width >= 1280 ? 170 : 280}
-              className="px-7 flex-1 min-h-0"
+              height={width >= 1280 ? 170 : 255}
+              className="px-5"
             >
               <AreaChart
                 data={purchaseData}
@@ -73,11 +74,11 @@ export default function CardPurchaseSummary() {
                   axisLine={false}
                 />
                 <Tooltip
-                  formatter={(value, name) => {
+                  formatter={(value) => {
                     if (typeof value === "number") {
-                      return [`$${value.toLocaleString("en-US")}`, name];
+                      return [`$${value.toLocaleString("en-US")}`];
                     }
-                    return [value ?? "", name];
+                    return [value ?? ""];
                   }}
                   labelFormatter={(label) => {
                     const date = new Date(label);
