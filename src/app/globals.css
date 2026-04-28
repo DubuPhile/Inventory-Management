@@ -49,3 +49,16 @@ body {
     grid-template-rows: repeat(8, 7.5vh);
   }
 }
+
+.scrolling-left:hover {
+  animation: scroll-left 10s linear infinite;
+}
+@keyframes scroll-left {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+}
