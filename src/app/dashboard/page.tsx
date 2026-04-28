@@ -8,7 +8,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import CardExpenseSummary from "./CardExpenseSummary";
-import CardPurchaseSummary from "./CardPurchaseSuymmary";
+import CardPurchaseSummary from "./CardPurchaseSummary";
 import CardSalesSummary from "./CardSalesSummary";
 import CartPopularProducts from "./CartPopularProducts";
 import StatCard from "./StatCard";
