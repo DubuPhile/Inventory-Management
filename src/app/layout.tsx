@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} w-full antialiased`}
+      className={`${geistSans.className} ${geistMono.variable} w-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <DashboardWrapper>{children}</DashboardWrapper>
