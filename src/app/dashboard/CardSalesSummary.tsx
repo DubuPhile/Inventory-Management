@@ -78,6 +78,7 @@ export default function CardSalesSummary() {
               <select
                 className="shadow-sm border text-gray-800 border-gray-300 dark:border-gray-600 bg-white p-2 rounded"
                 value={timeframe}
+                id={timeframe}
                 onChange={(e) => {
                   setTimeFrame(e.target.value);
                 }}
